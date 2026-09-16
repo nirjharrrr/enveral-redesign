@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Sign up — Enveral</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 34 34%22><rect width=%2234%22 height=%2234%22 rx=%2210%22 fill=%22%230a0a0c%22/><path d=%22M9 22V12l4 6 4-9 4 11 4-4%22 stroke=%22%23d7ff3f%22 stroke-width=%222.4%22 fill=%22none%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22/></svg>" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/styles.css" />
+<style>
+  .auth-wrap { min-height:100vh; display:flex; align-items:center; justify-content:center; padding:40px 20px; }
+  .auth-card { width:100%; max-width:420px; }
+  .oauth-btn { width:100%; justify-content:center; gap:10px; }
+  .divider { display:flex; align-items:center; gap:12px; color:var(--text-tertiary); font-size:12.5px; margin:24px 0; }
+  .divider::before, .divider::after { content:""; flex:1; height:1px; background:var(--border); }
+  .auth-form { display:none; }
+  .auth-form.active { display:block; }
+</style>
+</head>
+<body class="glow-bg">
+
+<div class="auth-wrap">
+  <div class="auth-card">
+    <div class="text-center">
+      <a href="index.html" class="logo" style="justify-content:center;">
+        <span class="logo-mark"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 16V8l3 5 3-7 3 8 3-3 4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <span class="logo-word" style="font-size:21px;">enveral</span>
+      </a>
+    </div>
+
+    <div class="card mt-32" style="padding:36px;">
+      <div class="seg" style="width:100%; justify-content:center;">
+        <button class="active" style="flex:1;" onclick="showForm('signup')" id="tab-signup">Sign up</button>
+        <button style="flex:1;" onclick="showForm('signin')" id="tab-signin">Sign in</button>
+      </div>
+
+      <form class="auth-form active mt-24" id="form-signup" onsubmit="return false;">
+        <h2 style="font-size:20px;">Create your account</h2>
+        <p class="text-sm mt-8">Start free — 3 clips a month, no credit card.</p>
+
+        <div class="mt-24">
+          <label class="field-label">Full name</label>
+          <input class="input" placeholder="Jordan Rivera" />
+        </div>
+        <div class="mt-16">
+          <label class="field-label">Email</label>
+          <input class="input" type="email" placeholder="you@example.com" />
+        </div>
+        <div class="mt-16">
+          <label class="field-label">Password</label>
+          <input class="input" type="password" placeholder="At least 8 characters" />
+        </div>
+
+        <a href="dashboard.html" class="btn btn-primary btn-lg mt-24" style="width:100%;">Create free account</a>
+        <p class="text-sm text-tertiary mt-16" style="text-align:center;">By signing up you agree to our Terms &amp; Privacy Policy.</p>
+      </form>
+
+      <form class="auth-form mt-24" id="form-signin" onsubmit="return false;">
+        <h2 style="font-size:20px;">Welcome back</h2>
+        <p class="text-sm mt-8">Sign in to keep clipping.</p>
+
+        <div class="mt-24">
+          <label class="field-label">Email</label>
+          <input class="input" type="email" placeholder="you@example.com" />
+        </div>
+        <div class="mt-16">
+          <label class="field-label">Password</label>
+          <input class="input" type="password" placeholder="Your password" />
+        </div>
+
+        <a href="dashboard.html" class="btn btn-primary btn-lg mt-24" style="width:100%;">Sign in</a>
+        <p class="text-sm mt-16" style="text-align:center;"><a href="#" style="color:var(--accent); font-weight:600;">Forgot password?</a></p>
+      </form>
+
+      <div class="divider">or continue with</div>
+
+      <div class="flex items-center gap-12">
+        <button class="btn btn-secondary oauth-btn">
+          <svg width="16" height="16" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.99.66-2.25 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.85A11 11 0 0 0 12 23z"/><path fill="#FBBC05" d="M5.84 14.09A6.6 6.6 0 0 1 5.5 12c0-.73.12-1.43.34-2.09V7.06H2.18A11 11 0 0 0 1 12c0 1.77.43 3.45 1.18 4.94l3.66-2.85z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1a11 11 0 0 0-9.82 6.06l3.66 2.85C6.71 7.31 9.14 5.38 12 5.38z"/></svg>
+          Google
+        </button>
+        <button class="btn btn-secondary oauth-btn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.57.1.78-.25.78-.55v-1.94c-3.2.7-3.88-1.54-3.88-1.54-.52-1.33-1.28-1.68-1.28-1.68-1.04-.72.08-.7.08-.7 1.15.08 1.76 1.19 1.76 1.19 1.03 1.75 2.7 1.25 3.36.96.1-.74.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.8 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.24 2.76.12 3.05.74.81 1.19 1.83 1.19 3.09 0 4.41-2.7 5.39-5.26 5.67.41.36.78 1.06.78 2.14v3.17c0 .3.2.66.79.55A10.51 10.51 0 0 0 23.5 12c0-6.35-5.15-11.5-11.5-11.5z"/></svg>
+          GitHub
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function showForm(which) {
+    document.getElementById('form-signup').classList.toggle('active', which === 'signup');
+    document.getElementById('form-signin').classList.toggle('active', which === 'signin');
+    document.getElementById('tab-signup').classList.toggle('active', which === 'signup');
+    document.getElementById('tab-signin').classList.toggle('active', which === 'signin');
+  }
+  const mode = new URLSearchParams(window.location.search).get('mode');
+  if (mode === 'signin') showForm('signin');
+</script>
+
+</body>
+</html>

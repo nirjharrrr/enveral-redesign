@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Processing — Enveral</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 34 34%22><rect width=%2234%22 height=%2234%22 rx=%2210%22 fill=%22%230a0a0c%22/><path d=%22M9 22V12l4 6 4-9 4 11 4-4%22 stroke=%22%23d7ff3f%22 stroke-width=%222.4%22 fill=%22none%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22/></svg>" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/styles.css" />
+<style>
+  .proc-wrap { min-height:100vh; display:flex; align-items:center; justify-content:center; padding:40px 20px; }
+  .proc-card { width:100%; max-width:480px; text-align:center; padding:48px 36px; }
+  .spinner {
+    width:72px; height:72px; margin:0 auto; border-radius:50%;
+    border:5px solid var(--border); border-top-color:var(--accent);
+    animation: spin 1s linear infinite;
+  }
+  @keyframes spin { to { transform:rotate(360deg); } }
+  .progress-track { height:8px; border-radius:99px; background:var(--surface); overflow:hidden; margin-top:28px; }
+  .progress-fill { height:100%; width:6%; border-radius:99px; background:var(--accent); transition:width .4s ease; }
+  .step-list { text-align:left; margin-top:28px; display:flex; flex-direction:column; gap:14px; }
+  .step-item { display:flex; align-items:center; gap:12px; font-size:14px; color:var(--text-tertiary); }
+  .step-item .dot { width:20px; height:20px; border-radius:50%; border:2px solid var(--border-strong); flex-shrink:0; display:flex; align-items:center; justify-content:center; }
+  .step-item.done { color:var(--text-primary); }
+  .step-item.done .dot { background:var(--accent); border-color:var(--accent); }
+  .step-item.active { color:var(--text-primary); font-weight:600; }
+  .step-item.active .dot { border-color:var(--accent); }
+</style>
+</head>
+<body class="glow-bg">
+
+<div class="proc-wrap">
+  <div class="card proc-card">
+    <div class="spinner"></div>
+    <h2 class="mt-24" id="status-text" style="font-size:20px;">Uploading your video…</h2>
+    <p class="text-sm mt-8">Podcast Ep. 42 — Full Interview.mp4</p>
+
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+    <p class="text-sm text-tertiary mt-8" id="progress-pct">6%</p>
+
+    <div class="step-list">
+      <div class="step-item active" id="step-1"><span class="dot"></span> Uploading video</div>
+      <div class="step-item" id="step-2"><span class="dot"></span> Analyzing every frame</div>
+      <div class="step-item" id="step-3"><span class="dot"></span> Detecting viral moments</div>
+      <div class="step-item" id="step-4"><span class="dot"></span> Generating captions &amp; crops</div>
+    </div>
+
+    <a href="results.html" class="text-sm mt-32" style="display:inline-block; color:var(--text-tertiary);">Skip and view results →</a>
+  </div>
+</div>
+
+<script>
+  const steps = [
+    { pct: 15, text: "Uploading your video…", step: 1 },
+    { pct: 45, text: "Analyzing every frame…", step: 2 },
+    { pct: 75, text: "Detecting viral moments…", step: 3 },
+    { pct: 96, text: "Generating captions & crops…", step: 4 },
+  ];
+  let i = 0;
+  const fill = document.getElementById('progress-fill');
+  const pct = document.getElementById('progress-pct');
+  const status = document.getElementById('status-text');
+
+  function tick() {
+    if (i >= steps.length) {
+      window.location.href = 'results.html';
+      return;
+    }
+    const s = steps[i];
+    fill.style.width = s.pct + '%';
+    pct.textContent = s.pct + '%';
+    status.textContent = s.text;
+    for (let n = 1; n <= 4; n++) {
+      const el = document.getElementById('step-' + n);
+      el.classList.remove('active', 'done');
+      if (n < s.step) el.classList.add('done');
+      if (n === s.step) el.classList.add('active');
+    }
+    i++;
+    setTimeout(tick, 900);
+  }
+  tick();
+</script>
+
+</body>
+</html>
