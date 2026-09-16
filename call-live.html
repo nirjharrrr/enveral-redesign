@@ -6,14 +6,30 @@
 <title>Weekly Founders Call — Enveral</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 34 34%22><rect width=%2234%22 height=%2234%22 rx=%2210%22 fill=%22%230a0a0c%22/><path d=%22M9 22V12l4 6 4-9 4 11 4-4%22 stroke=%22%23d7ff3f%22 stroke-width=%222.4%22 fill=%22none%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22/></svg>" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/styles.css" />
 <style>
-  body { background: #000; height: 100vh; overflow: hidden; }
+  /* This screen is an intentional dark "theater mode", like every real video-call
+     product (Meet, Zoom, Riverside) even inside an otherwise light-themed app.
+     Scoping the surface tokens here keeps the rest of the site on the light system. */
+  .call-shell {
+    --bg-soft: #0a0a0c;
+    --elevated: #16161a;
+    --surface: #1c1c21;
+    --surface-hover: #232328;
+    --border: #29292f;
+    --border-strong: #37373e;
+    --text-primary: #f5f5f3;
+    --text-secondary: #a3a3ad;
+    --text-tertiary: #75757d;
+    color: var(--text-primary);
+    background: #000;
+  }
+  body { height: 100vh; overflow: hidden; }
   .call-shell { display:flex; flex-direction:column; height:100vh; }
   .call-topbar {
     height: 60px; flex-shrink:0; display:flex; align-items:center; justify-content:space-between;
-    padding: 0 20px; background: #0a0a0c; border-bottom: 1px solid var(--border);
+    padding: 0 20px; background: var(--bg-soft); border-bottom: 1px solid var(--border);
   }
   .call-main { flex:1; display:flex; min-height:0; }
   .video-area { flex:1; padding:16px; display:grid; grid-template-columns:repeat(2,1fr); grid-template-rows:repeat(2,1fr); gap:12px; min-width:0; }
@@ -44,7 +60,7 @@
   }
   .call-controls {
     height: 92px; flex-shrink:0; display:flex; align-items:center; justify-content:center; gap:12px;
-    background:#0a0a0c; border-top:1px solid var(--border); position:relative;
+    background: var(--bg-soft); border-top:1px solid var(--border); position:relative;
   }
   .ctrl-btn { width:50px; height:50px; border-radius:50%; display:flex; align-items:center; justify-content:center; background:var(--surface); border:1px solid var(--border-strong); }
   .ctrl-btn.off { background: var(--live); border-color:var(--live); }
@@ -77,7 +93,7 @@
 <div class="call-shell">
   <div class="call-topbar">
     <div class="flex items-center gap-12">
-      <span class="logo-mark" style="width:30px;height:30px;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 16V8l3 5 3-7 3 8 3-3 4 4" stroke="#d7ff3f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      <span class="logo-mark" style="width:30px;height:30px;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 16V8l3 5 3-7 3 8 3-3 4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
       <span style="font-weight:700; font-size:14.5px;">Weekly Founders Call</span>
       <span class="badge badge-live">Recording</span>
     </div>
